@@ -28,6 +28,11 @@ function DashBoard() {
 
     fetchSession();
   }, []);
+
+  const signOut = async () => {
+    await authClient.signOut();
+    redirect("sign-in");
+  };
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center text-2xl">
       <Image
@@ -42,6 +47,7 @@ function DashBoard() {
       <p className="bg-linear-to-r from-red-400 to-blue-400 text-transparent bg-clip-text">
         {user?.name}
       </p>
+      <p className="text-sm bg-[red] rounded-2xl p-2 mt-4" onClick={signOut}>Sign Out</p>
     </div>
   );
 }
